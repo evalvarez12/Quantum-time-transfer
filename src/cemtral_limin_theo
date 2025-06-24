@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Jun  2 09:51:29 2023
+
+@author: eduardo
+"""
+
+import numpy as np
+
+n = 10000
+pn = 300 # partition size 
+N = pn*n
+sample = np.random.normal(46.123*0, 350, N)
+
+
+
+print(np.average(sample))
+
+print(np.std(sample))
+
+part = np.zeros((n, pn))
+for i in  range(n):
+    part[i,:] = sample[(i)*pn : (i+1)*pn]
+    
+
+means = np.average(part, 1)
+stds = np.std(part, 1)
+    
+print(np.average(means))
+print(np.std(means))
+
+
+
+print(np.std(sample)/np.sqrt(pn))
